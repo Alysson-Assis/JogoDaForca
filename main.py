@@ -1,30 +1,30 @@
 from random import *
 
 
-with open(file="words.txt", mode="r") as data:
-    list_words = [word.rstrip('\n') for word in data]
+with open(file="words.txt", mode="r") as dados:
+    list_palavras = [palavra.rstrip('\n') for palavra in dados]
 
-random_word = choice(list_words)
-print(random_word)
+palavra_random = choice(list_palavras)
+print(palavra_random)
 
-len_word = len(random_word)
-life = 6
-display = ["_" for _ in range(len_word)]
+len_palavra = len(palavra_random)
+vida = 6
+display = ["_" for _ in range(len_palavra)]
 
-num_blank = len(display)
-game_is_on = "_" in display
+num_taços = len(display)
+jogoLigado = "_" in display
 
-while game_is_on:
-    print(display)
-    chosen_letter = input("Guess a letter: ").lower()
+while jogoLigado:
+    print(f"{' '.join(display)}")
+    letra_escolhida = input("Adivinhe uma letra: ").lower()
 
-    for position in range(len_word):
-        letter = random_word[position]
-        if letter == chosen_letter:
-            display[position] = letter
-    if chosen_letter not in random_word:
-        life -=1
+    for posicao in range(len_palavra):
+        letra = palavra_random[posicao]
+        if letra == letra_escolhida:
+            display[posicao] = letra
+    if letra_escolhida not in palavra_random:
+        vida -=1
 
-    if life == 0:
-        game_is_on = False
-    print(life)
+    if vida == 0:
+        jogoLigado = False
+    print(f"\nVocê tem {vida} chances!")
